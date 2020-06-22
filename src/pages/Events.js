@@ -65,6 +65,7 @@ function EventsPage() {
                 description
                 creator {
                     _id
+                    email
                   }
                 }
             }
