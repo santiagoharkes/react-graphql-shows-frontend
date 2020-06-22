@@ -28,6 +28,27 @@ function EventsPage() {
   };
 
   const modalConfirmHandler = () => {
+    // const requestBody = {
+    //   query: `
+    //     mutation {
+    //       createEvent(eventInput: 
+    //         { 
+    //           title: "${eventData.title}", 
+    //           price: ${eventData.price}, 
+    //           date: "${eventData.date}", 
+    //           description: "${eventData.description}"})
+    //             {
+    //             _id
+    //             title
+    //             price
+    //             description
+    //             creator {
+    //                 _id
+    //               }
+    //             }
+    //         }
+    //   `,
+    // };
     const requestBody = {
       query: `
         mutation {
@@ -296,19 +317,19 @@ function EventsPage() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <>
-          {token && (
-            <button onClick={startCreateEventHandler}>Add event</button>
-          )}
-          <ul className="events__list">
-            <EventList
-              allEvents={allEvents}
-              authUserId={context.userId}
-              onViewDetail={showDetailHandler}
-            />
-          </ul>
-        </>
-      )}
+          <>
+            {token && (
+              <button onClick={startCreateEventHandler}>Add event</button>
+            )}
+            <ul className="events__list">
+              <EventList
+                allEvents={allEvents}
+                authUserId={context.userId}
+                onViewDetail={showDetailHandler}
+              />
+            </ul>
+          </>
+        )}
     </div>
   );
 }
