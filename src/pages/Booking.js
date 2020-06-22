@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import authContext from "../context/auth-context";
 import Spinner from "../components/Spinner/Spinner";
+import BookingList from '../components/Booking/BookingList/BookingList'
 
 function BookingPage() {
   const context = useContext(authContext);
@@ -58,6 +59,49 @@ function BookingPage() {
       });
   };
 
+  const onDelete = (bookingId) => {
+    setIsLoading(true);
+
+    const requestBody = {
+      query: `
+        mutation {
+          cancelBooking(bookingId: "${bookingId}") {
+            _id
+            title
+          }
+        }
+      `,
+    };
+
+    fetch("http://localhost:8000/graphql", {
+      method: "POST",
+      body: JSON.stringify(requestBody),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + context.token,
+      },
+    })
+      .then((res) => {
+        if (res.status !== 200 && res.status !== 201) {
+          throw new Error("Algo falló!");
+        }
+        setIsLoading(false);
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data)
+        const filterBookings = allBookings.filter(booking => {
+          return booking._id !== bookingId
+        })
+        setAllBookings(filterBookings)
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
+  }
+
   useEffect(() => {
     fetchBookings();
   }, []);
@@ -67,15 +111,8 @@ function BookingPage() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <ul>
-          {allBookings.map((booking) => (
-            <li key={booking._id}>
-              <p>{booking.event.title}</p>
-              <p>{booking.user.email}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+          <BookingList booking={allBookings} onDelete={onDelete} />
+        )}
     </div>
   );
 }
