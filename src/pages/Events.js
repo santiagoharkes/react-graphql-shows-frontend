@@ -31,11 +31,11 @@ function EventsPage() {
     // const requestBody = {
     //   query: `
     //     mutation {
-    //       createEvent(eventInput: 
-    //         { 
-    //           title: "${eventData.title}", 
-    //           price: ${eventData.price}, 
-    //           date: "${eventData.date}", 
+    //       createEvent(eventInput:
+    //         {
+    //           title: "${eventData.title}",
+    //           price: ${eventData.price},
+    //           date: "${eventData.date}",
     //           description: "${eventData.description}"})
     //             {
     //             _id
@@ -302,14 +302,14 @@ function EventsPage() {
       {selectedEvent.eventState && <Backdrop onCancel={modalCancelHandler} />}
       {selectedEvent.eventState && (
         <Modal
-          title="Add event"
+          title="Reservar un evento"
           canCancel
           canConfirm
           onCancel={modalCancelHandler}
           onConfirm={modalBookHandler}
           dinamicText={"Reservar"}
         >
-          <div className="form-control">
+          <div>
             <p>{selectedEvent.eventData.title}</p>
           </div>
         </Modal>
@@ -318,19 +318,24 @@ function EventsPage() {
       {isLoading ? (
         <Spinner />
       ) : (
-          <>
+        <>
+          <ul className="events__list">
             {token && (
-              <button onClick={startCreateEventHandler}>Add event</button>
+              <button
+                className="events__list-buttonAdd"
+                onClick={startCreateEventHandler}
+              >
+                Add event
+              </button>
             )}
-            <ul className="events__list">
-              <EventList
-                allEvents={allEvents}
-                authUserId={context.userId}
-                onViewDetail={showDetailHandler}
-              />
-            </ul>
-          </>
-        )}
+            <EventList
+              allEvents={allEvents}
+              authUserId={context.userId}
+              onViewDetail={showDetailHandler}
+            />
+          </ul>
+        </>
+      )}
     </div>
   );
 }

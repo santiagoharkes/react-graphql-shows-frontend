@@ -119,11 +119,11 @@ function AuthPage() {
         </div>
         <div className="form-actions">
           <button type="submit">Enviar</button>
-          <button type="button" onClick={toggleLogin}>
+          <p onClick={toggleLogin}>
             {isLogin
               ? "No tengo usuario, quiero registrarme!"
               : "Ya estoy registrado, quiero loguearme"}
-          </button>
+          </p>
         </div>
       </form>
     </>

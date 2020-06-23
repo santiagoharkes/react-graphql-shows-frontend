@@ -1,21 +1,23 @@
-import React from 'react'
+import React from "react";
 
-const bookingList = props => (
-    <ul>
-        {props.booking.map(booking => {
-            return (
-                <li key={booking._id}>
-                    <div>
-                        <p>{booking.event.title}</p>
-                        <p>{booking.user.email}</p>
-                    </div>
-                    <div>
-                        <button onClick={() => props.onDelete(booking._id)}>Cancel</button>
-                    </div>
-                </li>
-            )
-        })}
-    </ul>
-)
+import "../../../pages/Booking.css";
 
-export default bookingList
+const bookingList = (props) => (
+  <ul className="booking__content-ul">
+    {props.booking.map((booking) => {
+      return (
+        <li key={booking._id}>
+          <div className="booking__content-text">
+            <h1>{booking.event.title}</h1>
+            <p>{booking.user.email}</p>
+          </div>
+          <div className="booking__content-button">
+            <button onClick={() => props.onDelete(booking._id)}>Cancel</button>
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+);
+
+export default bookingList;

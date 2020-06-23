@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import authContext from "../context/auth-context";
 import Spinner from "../components/Spinner/Spinner";
-import BookingList from '../components/Booking/BookingList/BookingList'
+import BookingList from "../components/Booking/BookingList/BookingList";
+
+import "./Booking.css";
 
 function BookingPage() {
   const context = useContext(authContext);
@@ -89,30 +91,30 @@ function BookingPage() {
         return res.json();
       })
       .then((data) => {
-        console.log(data)
-        const filterBookings = allBookings.filter(booking => {
-          return booking._id !== bookingId
-        })
-        setAllBookings(filterBookings)
-        setIsLoading(false)
+        console.log(data);
+        const filterBookings = allBookings.filter((booking) => {
+          return booking._id !== bookingId;
+        });
+        setAllBookings(filterBookings);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
       });
-  }
+  };
 
   useEffect(() => {
     fetchBookings();
   }, []);
 
   return (
-    <div>
+    <div className="booking__content">
       {isLoading ? (
         <Spinner />
       ) : (
-          <BookingList booking={allBookings} onDelete={onDelete} />
-        )}
+        <BookingList booking={allBookings} onDelete={onDelete} />
+      )}
     </div>
   );
 }

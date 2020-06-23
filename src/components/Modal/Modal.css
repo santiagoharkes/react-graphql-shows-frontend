@@ -3,15 +3,18 @@
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   position: fixed;
-  top: 20vh;
+  top: 10vh;
   left: 5%;
   z-index: 100;
+  border-radius: 20px;
 }
 
 .modal__header {
   padding: 1rem;
   background: #5101d1;
   color: white;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 .modal__header h1 {
@@ -21,12 +24,39 @@
 
 .modal__content {
   padding: 1rem;
+  background-color: #9b5dff;
+}
+
+.modal__content input {
+  background-color: rgba(255, 255, 255, 0.774);
+  color: #5101d1;
+}
+
+.modal__content textarea {
+  border-radius: 20px;
+  border: none;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .modal__actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
+  background-color: #9b5dff;
+}
+
+.modal__actions .btn {
+  width: 90%;
+  background-color: #fcca46;
+  color: #24035a;
+  font: inherit;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {

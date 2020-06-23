@@ -1,36 +1,69 @@
 .auth-form {
-    width: 25rem;
-    max-width: 80%;
-    margin: 5rem auto;
+  width: 25rem;
+  max-width: 100%;
+  margin: 7rem auto;
+  background-color: #00000046;
+  border-radius: 20px;
+  border: 1px solid #6000fc93;
+  color: white;
 }
 
-.form-control label,
-.form-control input {
-    width: 100%;
-    display: block;
-}
-
-.form-control label {
-    margin-bottom: 0.5rem;
+.auth-form h3 {
+  padding: 20px;
+  text-align: center;
+  margin: 0;
 }
 
 .form-control {
-    margin-bottom: 1rem;
+  width: 100%;
+  padding: 20px;
+}
+
+.form-control label {
+  padding: 10px;
+}
+
+.form-control input {
+  width: 100%;
+  margin: 10px 0 0 0;
+  display: block;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  background-color: #9b5dff;
+  color: white;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.form-actions p {
+  cursor: pointer;
+  text-align: center;
+  color: #fcca46;
 }
 
 .form-actions button {
-    background-color: rgb(187, 15, 15);
-    color: white;
-    font: inherit;
-    outline: none;
-    border: 1px solid rgb(90, 9, 9);
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    margin-right: 1rem;
-    cursor: pointer;
+  background-color: #fcca46;
+  color: #24035a;
+  font: inherit;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  width: 100%;
+  margin: 20px 0 0 0;
 }
 
 .form-actions button:hover,
 .form-actions button:active {
-    background-color: rgb(126, 12, 12);
+  background-color: #fcca46;
+  color: #24035a;
 }
